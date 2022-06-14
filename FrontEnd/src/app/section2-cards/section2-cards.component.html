@@ -1,0 +1,44 @@
+<div class="section" id="Second">
+    <div class="block" id="block2">
+        <h1>Gallery</h1>
+        <div class="cards">
+            <div class="card" *ngFor="let ent of itemsList">
+                
+                <img class="card-img" id="card-img{{ent._links.entity4}}" src="/assets/1.jpeg" alt="">
+                <span  class=card-title><strong>{{ent.title6}}</strong></span>
+                <p  id="price">Price: {{ent.hight}}$</p>
+                
+                <b><div class="interactpartofcard"><img (click)="onSelect(ent)" src="/assets/edit.png" alt=""><span (click)="deleteItem(ent)" id="xxx"> X </span></div></b>
+                <!-- <p class="bordertop" id="{{visibility[0]}}">{{ent.price}}</p> -->
+                <!-- <img class="moreinfobtn" (click) = "changeVisibility(0)" src="\assets\morebtn.png" alt=""> -->
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div class="section" id="Third">
+    <div class="block">
+        
+        <div class="interactblock">
+        <h1>ADD</h1>
+        <form #form1="ngForm" (ngSubmit)="addItem(form1.value)">
+            <input type="hidden" id="name" class="feedback-input" name="id"  ngModel="-1">
+            <input type="text" id="email" class="feedback-input" placeholder="Name" name="title6"  ngModel="New Entity">
+            <input type="number" class="feedback-input" placeholder="Price" name="hight" ngModel=23>
+            <input type="submit" value="Add entity">
+        </form>
+        </div>
+
+        <div class="interactblock" *ngIf="selectedItem">
+        <h1>EDIT</h1>
+        <form  #form2="ngForm" (ngSubmit)="updateItem(form2.value)">
+            <!-- <input type="hidden" id="name" class="feedback-input" name="id"  ngModel="{{selectedItem._links.gamepad}}"> -->
+            <input type="text" id="email" class="feedback-input" placeholder="Name" name="title6"  ngModel="{{selectedItem.title6}}">
+            <input type="number" class="feedback-input" placeholder="Price"  name="hight" ngModel="{{selectedItem._links}}">
+            <input type="submit"  value="Edit Gamepad">
+        </form> 
+        </div>
+    </div>
+</div>
+
+
